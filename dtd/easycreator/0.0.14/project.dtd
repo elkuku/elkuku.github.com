@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- @version SVN $Id: project.dtd 1234 2010-06-06 21:01:08Z elkuku $ -->
 <!ELEMENT easyproject (name, comname, JCompat, modules?, plugins?, tables?, autoCodes?, elements?, buildoptions?)>
 <!ATTLIST easyproject
 	type CDATA #REQUIRED

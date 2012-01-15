@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- @version SVN $Id: project-setup.dtd 1237 2010-06-07 02:24:18Z elkuku $ -->
 <!ELEMENT easyproject (name, description, version, jVersion, phpVersion, dbTables?, author?, authorUrl?, menu?, submenu?)>
 <!ATTLIST easyproject
 	type CDATA #REQUIRED
