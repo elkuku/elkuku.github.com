@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @version SVN $Id: project.dtd 1234 2010-06-06 21:01:08Z elkuku $ -->
+<!ELEMENT easyproject (name, comname, JCompat, modules?, plugins?, tables?, autoCodes?, elements?, buildoptions?)>
+<!ATTLIST easyproject
+	type CDATA #REQUIRED
+	version CDATA #REQUIRED
+	tpl CDATA #REQUIRED
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT comname (#PCDATA)>
+<!ELEMENT JCompat (#PCDATA)>
+
+<!ELEMENT tables (table+)>
+<!ELEMENT table (name, relations?)>
+<!ELEMENT relations (relation+)>
+<!ELEMENT relation (type, field, onTable, onField, aliases)>
+<!ELEMENT aliases (alias+)>
+<!ELEMENT alias (name, field)>
+
+<!ELEMENT autoCodes (autoCode+)>
+<!ELEMENT autoCode (options?, fields+)>
+<!ATTLIST autoCode
+	scope CDATA #REQUIRED
+	group CDATA #REQUIRED
+	name CDATA #REQUIRED
+	element CDATA #REQUIRED
+>
+
+<!ELEMENT fields (field+)>
+<!ATTLIST fields
+	key CDATA #REQUIRED
+>
+
+<!ELEMENT xfields.field (name, label, type, length, attributes, null, extra, display)>
+<!ATTLIST fields.field
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT buildoptions (archive_zip, archive_tgz, archive_bz2, create_indexhtml, create_md5, include_ecr_projectfile, remove_autocode)>
+<!ELEMENT archive_zip (#PCDATA)>
+<!ELEMENT archive_tgz (#PCDATA)>
+<!ELEMENT archive_bz2 (#PCDATA)>
+<!ELEMENT create_indexhtml (#PCDATA)>
+<!ELEMENT create_md5 (#PCDATA)>
+<!ELEMENT include_ecr_projectfile (#PCDATA)>
+<!ELEMENT remove_autocode (#PCDATA)>

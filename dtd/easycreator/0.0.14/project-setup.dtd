@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @version SVN $Id: project-setup.dtd 1237 2010-06-07 02:24:18Z elkuku $ -->
+<!ELEMENT easyproject (name, description, version, jVersion, phpVersion, dbTables?, author?, authorUrl?, menu?, submenu?)>
+<!ATTLIST easyproject
+	type CDATA #REQUIRED
+	version CDATA #REQUIRED
+	scope CDATA #IMPLIED
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT jVersion (#PCDATA)>
+<!ELEMENT phpVersion (#PCDATA)>
+<!ELEMENT dbTables (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT authorUrl (#PCDATA)>
+<!ELEMENT menu (#PCDATA)>
+<!ELEMENT submenu (menu+)>
+<!ATTLIST menu
+	act NMTOKEN #IMPLIED
+	task NMTOKEN #IMPLIED
+	controller NMTOKEN #IMPLIED
+	view NMTOKEN #IMPLIED
+	layout NMTOKEN #IMPLIED
+	sub NMTOKEN #IMPLIED
+	img CDATA #IMPLIED
+	link CDATA #IMPLIED
+>
