@@ -1,0 +1,3186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="Joomla\Github">
+  <file path="Github.php" hash="a9c3d60c843c861c84d7c87cae60bf8e" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github" line="39" package="Joomla\Framework">
+      <extends/>
+      <name>Github</name>
+      <full_name>\Joomla\Github\Github</full_name>
+      <docblock line="12">
+        <description>Joomla Platform class for interacting with a GitHub server instance.</description>
+        <long-description/>
+        <tag line="12" name="property-read" description="GitHub API object for activity." type="\Joomla\Github\Activity" variable="$activity">
+          <type by_reference="false">\Joomla\Github\Activity</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for authorizations." type="\Joomla\Github\Authorization" variable="$authorization">
+          <type by_reference="false">\Joomla\Github\Authorization</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for data." type="\Joomla\Github\Data" variable="$data">
+          <type by_reference="false">\Joomla\Github\Data</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for gists." type="\Joomla\Github\Gists" variable="$gists">
+          <type by_reference="false">\Joomla\Github\Gists</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for gitignore." type="\Joomla\Github\Gitignore" variable="$gitignore">
+          <type by_reference="false">\Joomla\Github\Gitignore</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for issues." type="\Joomla\Github\Issues" variable="$issues">
+          <type by_reference="false">\Joomla\Github\Issues</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for markdown." type="\Joomla\Github\Markdown" variable="$markdown">
+          <type by_reference="false">\Joomla\Github\Markdown</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for meta." type="\Joomla\Github\Meta" variable="$meta">
+          <type by_reference="false">\Joomla\Github\Meta</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for orgs." type="\Joomla\Github\Orgs" variable="$orgs">
+          <type by_reference="false">\Joomla\Github\Orgs</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for pulls.&#10;//@property-read  Refs        $refs        GitHub API object for referencess.&#10;//@property-read  Forks       $forks       GitHub API object for forks.&#10;//@property-read  Commits     $commits     GitHub API object for commits.&#10;//@property-read  Milestones  $milestones  GitHub API object for commits.&#10;//@property-read  Statuses    $statuses    GitHub API object for commits.&#10;//@property-read  Account     $account     GitHub API object for account references.&#10;//@property-read  Hooks       $hooks       GitHub API object for hooks." type="\Joomla\Github\Pulls" variable="$pulls">
+          <type by_reference="false">\Joomla\Github\Pulls</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for repositories." type="\Joomla\Github\Package\Repositories" variable="$repositories">
+          <type by_reference="false">\Joomla\Github\Package\Repositories</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for search." type="\Joomla\Github\Search" variable="$search">
+          <type by_reference="false">\Joomla\Github\Search</type>
+        </tag>
+        <tag line="12" name="property-read" description="GitHub API object for users." type="\Joomla\Github\Users" variable="$users">
+          <type by_reference="false">\Joomla\Github\Users</type>
+        </tag>
+        <tag line="12" name="package" description="Joomla\Framework"/>
+        <tag line="12" name="since" description="1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="45" namespace="Joomla\Github" package="Default">
+        <name>$options</name>
+        <default/>
+        <docblock line="41">
+          <description/>
+          <long-description/>
+          <tag line="41" name="var" description="Options for the GitHub object." type="\Joomla\Registry\Registry">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="41" name="since" description="1.0"/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="51" namespace="Joomla\Github" package="Default">
+        <name>$client</name>
+        <default/>
+        <docblock line="47">
+          <description/>
+          <long-description/>
+          <tag line="47" name="var" description="The HTTP client object to use in sending HTTP requests." type="\Joomla\Github\Http">
+            <type by_reference="false">\Joomla\Github\Http</type>
+          </tag>
+          <tag line="47" name="since" description="1.0"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="61" package="Joomla\Framework">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="53">
+          <description>Constructor.</description>
+          <long-description/>
+          <tag line="53" name="param" description="GitHub options object." type="\Joomla\Registry\Registry" variable="$options">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="53" name="param" description="The HTTP client object." type="\Joomla\Github\Http" variable="$client">
+            <type by_reference="false">\Joomla\Github\Http</type>
+          </tag>
+          <tag line="53" name="since" description="1.0"/>
+        </docblock>
+        <argument line="61">
+          <name>$options</name>
+          <default>null</default>
+          <type>\Joomla\Registry\Registry</type>
+        </argument>
+        <argument line="61">
+          <name>$client</name>
+          <default>null</default>
+          <type>\Joomla\Github\Http</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="80" package="Joomla\Framework">
+        <name>__get</name>
+        <full_name>__get</full_name>
+        <docblock line="70">
+          <description>Magic method to lazily create API objects</description>
+          <long-description/>
+          <tag line="70" name="param" description="Name of property to retrieve" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="return" description="GitHub API object (gists, issues, pulls, etc)." type="Object">
+            <type by_reference="false">Object</type>
+          </tag>
+          <tag line="70" name="since" description="1.0"/>
+          <tag line="70" name="throws" description="If $name is not a valid sub class." type="\InvalidArgumentException">
+            <type by_reference="false">\InvalidArgumentException</type>
+          </tag>
+        </docblock>
+        <argument line="80">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="106" package="Joomla\Framework">
+        <name>getOption</name>
+        <full_name>getOption</full_name>
+        <docblock line="97">
+          <description>Get an option from the GitHub instance.</description>
+          <long-description/>
+          <tag line="97" name="param" description="The name of the option to get." type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="97" name="return" description="The option value." type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="97" name="since" description="1.0"/>
+        </docblock>
+        <argument line="106">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="121" package="Joomla\Framework">
+        <name>setOption</name>
+        <full_name>setOption</full_name>
+        <docblock line="111">
+          <description>Set an option for the GitHub instance.</description>
+          <long-description/>
+          <tag line="111" name="param" description="The name of the option to set." type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="111" name="param" description="The option value to set." type="mixed" variable="$value">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="111" name="return" description="This object for method chaining." type="\Joomla\Github\GitHub">
+            <type by_reference="false">\Joomla\Github\GitHub</type>
+          </tag>
+          <tag line="111" name="since" description="1.0"/>
+        </docblock>
+        <argument line="121">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="121">
+          <name>$value</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Github.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories.php" hash="397717988dc47c1bc07983fb4e203095" package="Joomla\Platform\GitHub">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla.Platform"/>
+      <tag line="2" name="subpackage" description="GitHub"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package" line="34" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Repositories</name>
+      <full_name>\Joomla\Github\Package\Repositories</full_name>
+      <docblock line="14">
+        <description>GitHub API Activity class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="14" name="package" description="Joomla.Platform"/>
+        <tag line="14" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="14" name="since" description="¿"/>
+        <tag line="14" name="documentation" description="http://developer.github.com/v3/repos"/>
+        <tag line="14" name="property-read" description="GitHub API object for collaborators." type="\Joomla\Github\Package\Repositories\Collaborators" variable="$collaborators">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Collaborators</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for comments." type="\Joomla\Github\Package\Repositories\Comments" variable="$comments">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Comments</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for commits." type="\Joomla\Github\Package\Repositories\Commits" variable="$commits">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Commits</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for contents." type="\Joomla\Github\Package\Repositories\Contents" variable="$contents">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Contents</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for downloads." type="\Joomla\Github\Package\Repositories\Downloads" variable="$downloads">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Downloads</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for forks." type="\Joomla\Github\Package\Repositories\Forks" variable="$forks">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Forks</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for hooks." type="\Joomla\Github\Package\Repositories\Hooks" variable="$hooks">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Hooks</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for keys." type="\Joomla\Github\Package\Repositories\Keys" variable="$keys">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Keys</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for merging." type="\Joomla\Github\Package\Repositories\Merging" variable="$merging">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Merging</type>
+        </tag>
+        <tag line="14" name="property-read" description="GitHub API object for statuses." type="\Joomla\Github\Package\Repositories\Statuses" variable="$statuses">
+          <type by_reference="false">\Joomla\Github\Package\Repositories\Statuses</type>
+        </tag>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="49" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListOwn</name>
+        <full_name>getListOwn</full_name>
+        <docblock line="36">
+          <description>List your repositories.</description>
+          <long-description>&lt;p&gt;List repositories for the authenticated user.&lt;/p&gt;</long-description>
+          <tag line="36" name="param" description="Sort type. all, owner, public, private, member. Default: all." type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="36" name="param" description="Sort field. created, updated, pushed, full_name, default: full_name." type="string" variable="$sort">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="36" name="param" description="Sort direction. asc or desc, default: when using full_name: asc, otherwise desc." type="string" variable="$direction">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="36" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+          <tag line="36" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="49">
+          <name>$type</name>
+          <default>'all'</default>
+          <type/>
+        </argument>
+        <argument line="49">
+          <name>$sort</name>
+          <default>'full_name'</default>
+          <type/>
+        </argument>
+        <argument line="49">
+          <name>$direction</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="95" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListUser</name>
+        <full_name>getListUser</full_name>
+        <docblock line="81">
+          <description>List user repositories.</description>
+          <long-description>&lt;p&gt;List public repositories for the specified user.&lt;/p&gt;</long-description>
+          <tag line="81" name="param" description="The user name." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="param" description="Sort type. all, owner, member. Default: all." type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="param" description="Sort field. created, updated, pushed, full_name, default: full_name." type="string" variable="$sort">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="param" description="Sort direction. asc or desc, default: when using full_name: asc, otherwise desc." type="string" variable="$direction">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+          <tag line="81" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="95">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$type</name>
+          <default>'all'</default>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$sort</name>
+          <default>'full_name'</default>
+          <type/>
+        </argument>
+        <argument line="95">
+          <name>$direction</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="139" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListOrg</name>
+        <full_name>getListOrg</full_name>
+        <docblock line="127">
+          <description>List organization repositories.</description>
+          <long-description>&lt;p&gt;List repositories for the specified org.&lt;/p&gt;</long-description>
+          <tag line="127" name="param" description="The name of the organization." type="string" variable="$org">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="127" name="param" description="Sort type. all, public, private, forks, sources, member. Default: all." type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="127" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+          <tag line="127" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="139">
+          <name>$org</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="139">
+          <name>$type</name>
+          <default>'all'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="167" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="156">
+          <description>List all repositories.</description>
+          <long-description>&lt;p&gt;This provides a dump of every repository, in the order that they were created.&lt;/p&gt;</long-description>
+          <tag line="156" name="param" description="The integer ID of the last Repository that you’ve seen." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="156" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+          <tag line="156" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="167">
+          <name>$id</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="201" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="179">
+          <description>Create.</description>
+          <long-description>&lt;p&gt;Create a new repository for the authenticated user or an organization. OAuth users must supply repo scope.&lt;/p&gt;</long-description>
+          <tag line="179" name="param" description="The repository name." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="The organization name (if needed)." type="string" variable="$org">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="The repository description." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="The repository homepage." type="string" variable="$homepage">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="Set true to create a private repository, false to create a public one.&#10;                                         Creating private repositories requires a paid GitHub account." type="boolean" variable="$private">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="179" name="param" description="Set true to enable issues for this repository, false to disable them." type="boolean" variable="$has_issues">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="179" name="param" description="Set true to enable the wiki for this repository, false to disable it." type="boolean" variable="$has_wiki">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="179" name="param" description="Set true to enable downloads for this repository, false to disable them." type="boolean" variable="$has_downloads">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="179" name="param" description="The id of the team that will be granted access to this repository.&#10;                                         This is only valid when creating a repo in an organization." type="integer" variable="$team_id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="179" name="param" description="true to create an initial commit with empty README." type="boolean" variable="$auto_init">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="179" name="param" description="Desired language or platform .gitignore template to apply.&#10;                                         Use the name of the template without the extension. For example, “Haskell” Ignored if auto_init parameter is not provided." type="string" variable="$gitignore_template">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="201">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="201">
+          <name>$org</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="201">
+          <name>$description</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="201">
+          <name>$homepage</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="201">
+          <name>$private</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="201">
+          <name>$has_issues</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="202">
+          <name>$has_wiki</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="202">
+          <name>$has_downloads</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="202">
+          <name>$team_id</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="202">
+          <name>$auto_init</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="202">
+          <name>$gitignore_template</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="238" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="230">
+          <description>Get a repository.</description>
+          <long-description/>
+          <tag line="230" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="230" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="230" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="238">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="238">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="266" package="Joomla\Platform\GitHub\Repositories">
+        <name>edit</name>
+        <full_name>edit</full_name>
+        <docblock line="249">
+          <description>Edit a repository.</description>
+          <long-description/>
+          <tag line="249" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="param" description="The repository name." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="param" description="The repository description." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="param" description="The repository homepage." type="string" variable="$homepage">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="param" description="Set true to create a private repository, false to create a public one.&#10;                                   Creating private repositories requires a paid GitHub account." type="boolean" variable="$private">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="249" name="param" description="Set true to enable issues for this repository, false to disable them." type="boolean" variable="$has_issues">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="249" name="param" description="Set true to enable the wiki for this repository, false to disable it." type="boolean" variable="$has_wiki">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="249" name="param" description="Set true to enable downloads for this repository, false to disable them." type="boolean" variable="$has_downloads">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="249" name="param" description="Update the default branch for this repository" type="string" variable="$default_branch">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="249" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="266">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$description</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$homepage</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$private</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="266">
+          <name>$has_issues</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="267">
+          <name>$has_wiki</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="267">
+          <name>$has_downloads</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="267">
+          <name>$default_branch</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="297" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListContributors</name>
+        <full_name>getListContributors</full_name>
+        <docblock line="288">
+          <description>List contributors.</description>
+          <long-description/>
+          <tag line="288" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="288" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="288" name="param" description="Set to 1 or true to include anonymous contributors in results." type="boolean" variable="$anon">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="288" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="297">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="297">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="297">
+          <name>$anon</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="321" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListLanguages</name>
+        <full_name>getListLanguages</full_name>
+        <docblock line="310">
+          <description>List languages.</description>
+          <long-description>&lt;p&gt;List languages for the specified repository. The value on the right of a language is the number of bytes of code
+written in that language.&lt;/p&gt;</long-description>
+          <tag line="310" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="310" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="310" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="321">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="321">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="340" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListTeams</name>
+        <full_name>getListTeams</full_name>
+        <docblock line="332">
+          <description>List Teams</description>
+          <long-description/>
+          <tag line="332" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="332" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="332" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="340">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="340">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="359" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListTags</name>
+        <full_name>getListTags</full_name>
+        <docblock line="351">
+          <description>List Tags.</description>
+          <long-description/>
+          <tag line="351" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="351" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="351" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="359">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="359">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="378" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListBranches</name>
+        <full_name>getListBranches</full_name>
+        <docblock line="370">
+          <description>List Branches.</description>
+          <long-description/>
+          <tag line="370" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="370" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="370" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="378">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="378">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="398" package="Joomla\Platform\GitHub\Repositories">
+        <name>getBranch</name>
+        <full_name>getBranch</full_name>
+        <docblock line="389">
+          <description>Get a Branch.</description>
+          <long-description/>
+          <tag line="389" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="389" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="389" name="param" description="Branch name." type="string" variable="$branch">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="389" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="398">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="398">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="398">
+          <name>$branch</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package" line="419" package="Joomla\Platform\GitHub\Repositories">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="409">
+          <description>Delete a Repository.</description>
+          <long-description>&lt;p&gt;Deleting a repository requires admin access. If OAuth is used, the delete_repo scope is required.&lt;/p&gt;</long-description>
+          <tag line="409" name="param" description="Repository owner." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="409" name="param" description="Repository name." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="409" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="419">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="419">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Statuses.php" hash="9807905d86b0634cc4baa33801167d14" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Statuses</name>
+      <full_name>\Joomla\Github\Package\Repositories\Statuses</full_name>
+      <docblock line="12">
+        <description>GitHub API References class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/statuses"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="12.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="40" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="23">
+          <description>Method to create a status.</description>
+          <long-description/>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The SHA1 value for which to set the status." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The state (pending, success, error or failure)." type="string" variable="$state">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="Optional target URL." type="string" variable="$targetUrl">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="Optional description for the status." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="throws" description="" type="\InvalidArgumentException">
+            <type by_reference="false">\InvalidArgumentException</type>
+          </tag>
+          <tag line="23" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+          <tag line="23" name="since" description="12.3"/>
+          <tag line="23" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="40">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="40">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="40">
+          <name>$sha</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="40">
+          <name>$state</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="40">
+          <name>$targetUrl</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="40">
+          <name>$description</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="83" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="72">
+          <description>Method to list statuses for an SHA.</description>
+          <long-description/>
+          <tag line="72" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="param" description="SHA1 for which to get the statuses." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="72" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="72" name="since" description="12.3"/>
+        </docblock>
+        <argument line="83">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="83">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="83">
+          <name>$sha</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Statuses.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Comments.php" hash="b9dc0ff0f6eb7eb09f445640700017c6" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Comments</name>
+      <full_name>\Joomla\Github\Package\Repositories\Comments</full_name>
+      <docblock line="12">
+        <description>GitHub API Repositories Comments class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/comments"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="35" package="Joomla\Platform\GitHub\Repositories">
+        <name>getListRepository</name>
+        <full_name>getListRepository</full_name>
+        <docblock line="23">
+          <description>Method to get a list of commit comments for a repository.</description>
+          <long-description/>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="Page to request" type="integer" variable="$page">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="23" name="param" description="Number of results to return per page" type="integer" variable="$limit">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="23" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="23" name="since" description="12.1"/>
+        </docblock>
+        <argument line="35">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$page</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$limit</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="58" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="45">
+          <description>Method to get a list of comments for a single commit for a repository.</description>
+          <long-description/>
+          <tag line="45" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="45" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="45" name="param" description="The SHA of the commit to retrieve." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="45" name="param" description="Page to request" type="integer" variable="$page">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="45" name="param" description="Number of results to return per page" type="integer" variable="$limit">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="45" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="45" name="since" description="12.1"/>
+        </docblock>
+        <argument line="58">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="58">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="58">
+          <name>$sha</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="58">
+          <name>$page</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="58">
+          <name>$limit</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="80" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="69">
+          <description>Method to get a single comment on a commit.</description>
+          <long-description/>
+          <tag line="69" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="69" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="69" name="param" description="ID of the comment to retrieve" type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="69" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="69" name="since" description="12.1"/>
+        </docblock>
+        <argument line="80">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="80">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="80">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="103" package="Joomla\Platform\GitHub\Repositories">
+        <name>edit</name>
+        <full_name>edit</full_name>
+        <docblock line="91">
+          <description>Method to edit a comment on a commit.</description>
+          <long-description/>
+          <tag line="91" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="param" description="The ID of the comment to edit." type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="param" description="The text of the comment." type="string" variable="$comment">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="91" name="since" description="12.1"/>
+        </docblock>
+        <argument line="103">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="103">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="103">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="103">
+          <name>$comment</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="131" package="Joomla\Platform\GitHub\Repositories">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="120">
+          <description>Method to delete a comment on a commit.</description>
+          <long-description/>
+          <tag line="120" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="120" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="120" name="param" description="The ID of the comment to edit." type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="120" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="120" name="since" description="12.1"/>
+        </docblock>
+        <argument line="131">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="131">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="131">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="158" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="143">
+          <description>Method to create a comment on a commit.</description>
+          <long-description/>
+          <tag line="143" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="143" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="143" name="param" description="The SHA of the commit to comment on." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="143" name="param" description="The text of the comment." type="string" variable="$comment">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="143" name="param" description="The line number of the commit to comment on." type="integer" variable="$line">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="143" name="param" description="A relative path to the file to comment on within the commit." type="string" variable="$filepath">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="143" name="param" description="Line index in the diff to comment on." type="integer" variable="$position">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="143" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="143" name="since" description="12.1"/>
+        </docblock>
+        <argument line="158">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$sha</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$comment</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$line</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$filepath</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="158">
+          <name>$position</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Comments.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Merging.php" hash="a918b957dee86f895074d2256b971cfa" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Merging</name>
+      <full_name>\Joomla\Github\Package\Repositories\Merging</full_name>
+      <docblock line="12">
+        <description>GitHub API Repositories Merging class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/merging"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="38" package="Joomla\Platform\GitHub\Repositories">
+        <name>perform</name>
+        <full_name>perform</full_name>
+        <docblock line="23">
+          <description>Perform a merge.</description>
+          <long-description/>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the base branch that the head will be merged into." type="string" variable="$base">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The head to merge. This can be a branch name or a commit SHA1." type="string" variable="$head">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="Commit message to use for the merge commit.&#10;                                  If omitted, a default message will be used." type="string" variable="$commit_message">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="throws" description="" type="\UnexpectedValueException">
+            <type by_reference="false">\UnexpectedValueException</type>
+          </tag>
+          <tag line="23" name="since" description="12.4"/>
+          <tag line="23" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="38">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="38">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="38">
+          <name>$base</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="38">
+          <name>$head</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="38">
+          <name>$commit_message</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Merging.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Forks.php" hash="06f713005c01992373d756f530e8f28f" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Forks</name>
+      <full_name>\Joomla\Github\Package\Repositories\Forks</full_name>
+      <docblock line="12">
+        <description>GitHub API Forks class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/forks"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="35" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="23">
+          <description>Method to fork a repository.</description>
+          <long-description/>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The organization to fork the repo into. By default it is forked to the current user." type="string" variable="$org">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="23" name="since" description="11.4"/>
+          <tag line="23" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="35">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$org</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="68" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="55">
+          <description>Method to list forks for a repository.</description>
+          <long-description/>
+          <tag line="55" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="55" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="55" name="param" description="Page to request" type="integer" variable="$page">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="55" name="param" description="Number of results to return per page" type="integer" variable="$limit">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="55" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="55" name="since" description="11.4"/>
+          <tag line="55" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="68">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$page</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$limit</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Forks.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Downloads.php" hash="50d2ec79ad297c8f37c3913cccb45802" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="25" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Downloads</name>
+      <full_name>\Joomla\Github\Package\Repositories\Downloads</full_name>
+      <docblock line="12">
+        <description>GitHub API Repositories Downloads class for the Joomla Platform.</description>
+        <long-description>&lt;p&gt;The downloads API is for package downloads only.
+If you want to get source tarballs you should use
+http://developer.github.com/v3/repos/contents/#get-archive-link instead.&lt;/p&gt;</long-description>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/downloads"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="37" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="27">
+          <description>List downloads for a repository.</description>
+          <long-description/>
+          <tag line="27" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="27" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="27" name="since" description="¿"/>
+          <tag line="27" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="37">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="37">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="59" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="48">
+          <description>Get a single download.</description>
+          <long-description/>
+          <tag line="48" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="48" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="48" name="param" description="The id of the download." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="48" name="since" description="¿"/>
+          <tag line="48" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="59">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="86" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="70">
+          <description>Create a new download (Part 1: Create the resource).</description>
+          <long-description>&lt;p&gt;Creating a new download is a two step process. You must first create a new download resource.&lt;/p&gt;</long-description>
+          <tag line="70" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The name." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="Size of file in bytes." type="string" variable="$size">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The description." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The content type." type="string" variable="$content_type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="since" description="¿"/>
+          <tag line="70" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="86">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$size</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$description</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$content_type</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="155" package="Joomla\Platform\GitHub\Repositories">
+        <name>upload</name>
+        <full_name>upload</full_name>
+        <docblock line="113">
+          <description>Create a new download (Part 2: Upload file to s3).</description>
+          <long-description>&lt;p&gt;Now that you have created the download resource, you can use the information
+in the response to upload your file to s3. This can be done with a POST to
+the s3_url you got in the create response. Here is a brief example using curl:&lt;/p&gt;
+
+&lt;p&gt;curl \
+    -F "key=downloads/octocat/Hello-World/new_file.jpg" \
+    -F "acl=public-read" \
+    -F "success_action_status=201" \
+    -F "Filename=new_file.jpg" \
+    -F "AWSAccessKeyId=1ABCDEF..." \
+    -F "Policy=ewogIC..." \
+    -F "Signature=mwnF..." \
+    -F "Content-Type=image/jpeg" \
+    -F "file=@new_file.jpg" \
+          https://github.s3.amazonaws.com/&lt;/p&gt;
+
+&lt;p&gt;NOTES
+The order in which you pass these fields matters! Follow the order shown above exactly.
+All parameters shown are required and if you excluded or modify them your upload will
+fail because the values are hashed and signed by the policy.&lt;/p&gt;
+
+&lt;p&gt;More information about using the REST API to interact with s3 can be found here:
+http://docs.amazonwebservices.com/AmazonS3/latest/API/&lt;/p&gt;</long-description>
+          <tag line="113" name="param" description="Value of path field in the response." type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of acl field in the response." type="string" variable="$acl">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="201, or whatever you want to get back." type="string" variable="$success_action_status">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of name field in the response." type="string" variable="$filename">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of accesskeyid field in the response." type="string" variable="$awsAccessKeyId">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of policy field in the response." type="string" variable="$policy">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of signature field in the response." type="string" variable="$signature">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Value of mime_type field in the response." type="string" variable="$content_type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="param" description="Local file. Example assumes the file existing in the directory&#10;                                         where you are running the curl command. Yes, the @ matters." type="string" variable="$file">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="113" name="since" description="¿"/>
+          <tag line="113" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="155">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$acl</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$success_action_status</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$filename</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$awsAccessKeyId</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$policy</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$signature</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$content_type</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="155">
+          <name>$file</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="191" package="Joomla\Platform\GitHub\Repositories">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="180">
+          <description>Delete a download.</description>
+          <long-description/>
+          <tag line="180" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="180" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="180" name="param" description="The id of the download." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="180" name="since" description="¿"/>
+          <tag line="180" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="191">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="191">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="191">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Downloads.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Commits.php" hash="ebd6b635d47c5d1644a1aeb554f2310a" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="22" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Commits</name>
+      <full_name>\Joomla\Github\Package\Repositories\Commits</full_name>
+      <docblock line="13">
+        <description>GitHub API Repositories Commits class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="13" name="documentation" description="http://developer.github.com/v3/repos/commits"/>
+        <tag line="13" name="package" description="Joomla.Platform"/>
+        <tag line="13" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="13" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="45" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="24">
+          <description>Method to list commits for a repository.</description>
+          <long-description>&lt;p&gt;A special note on pagination: Due to the way Git works, commits are paginated based on SHA
+instead of page number.
+Please follow the link headers as outlined in the pagination overview instead of constructing
+page links yourself.&lt;/p&gt;</long-description>
+          <tag line="24" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="24" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="24" name="param" description="Sha or branch to start listing commits from." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="24" name="param" description="Only commits containing this file path will be returned." type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="24" name="param" description="GitHub login, name, or email by which to filter by commit author." type="string" variable="$author">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="24" name="param" description="ISO 8601 Date - Only commits after this date will be returned." type="\Joomla\Date\Date" variable="$since">
+            <type by_reference="false">\Joomla\Date\Date</type>
+          </tag>
+          <tag line="24" name="param" description="ISO 8601 Date - Only commits before this date will be returned." type="\Joomla\Date\Date" variable="$until">
+            <type by_reference="false">\Joomla\Date\Date</type>
+          </tag>
+          <tag line="24" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+          <tag line="24" name="since" description="12.1"/>
+          <tag line="24" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="45">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="45">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="45">
+          <name>$sha</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="45">
+          <name>$path</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="45">
+          <name>$author</name>
+          <default>''</default>
+          <type/>
+        </argument>
+        <argument line="45">
+          <name>$since</name>
+          <default>null</default>
+          <type>\Joomla\Date\Date</type>
+        </argument>
+        <argument line="45">
+          <name>$until</name>
+          <default>null</default>
+          <type>\Joomla\Date\Date</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="82" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="70">
+          <description>Method to get a single commit for a repository.</description>
+          <long-description/>
+          <tag line="70" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="param" description="The SHA of the commit to retrieve." type="string" variable="$sha">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="70" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+          <tag line="70" name="since" description="12.1"/>
+          <tag line="70" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="82">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="82">
+          <name>$sha</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="113" package="Joomla\Platform\GitHub\Repositories">
+        <name>compare</name>
+        <full_name>compare</full_name>
+        <docblock line="101">
+          <description>Method to get a diff for two commits.</description>
+          <long-description/>
+          <tag line="101" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="101" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="101" name="param" description="The base of the diff, either a commit SHA or branch." type="string" variable="$base">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="101" name="param" description="The head of the diff, either a commit SHA or branch." type="string" variable="$head">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="101" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="101" name="since" description="12.1"/>
+        </docblock>
+        <argument line="113">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="113">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="113">
+          <name>$base</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="113">
+          <name>$head</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Commits.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Hooks.php" hash="8b1c646c204f21573d7c18a1335224ed" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Hooks</name>
+      <full_name>\Joomla\Github\Package\Repositories\Hooks</full_name>
+      <docblock line="12">
+        <description>GitHub API Hooks class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/hooks"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="12.3"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="29" namespace="Joomla\Github\Package\Repositories" package="Default">
+        <name>$events</name>
+        <default>array('push', 'issues', 'issue_comment', 'commit_comment', 'pull_request', 'gollum', 'watch', 'download', 'fork', 'fork_apply', 'member', 'public', 'status')</default>
+        <docblock line="23">
+          <description>Array containing the allowed hook events</description>
+          <long-description/>
+          <tag line="23" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="23" name="since" description="12.3"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="50" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="34">
+          <description>Method to create a hook on a repository.</description>
+          <long-description/>
+          <tag line="34" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="34" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="34" name="param" description="The name of the service being called." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="34" name="param" description="Array containing the config for the service." type="array" variable="$config">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="34" name="param" description="The events the hook will be triggered for." type="array" variable="$events">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="34" name="param" description="Flag to determine if the hook is active" type="boolean" variable="$active">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="34" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="34" name="since" description="12.3"/>
+          <tag line="34" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+          <tag line="34" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="50">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="50">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="50">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="50">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="50">
+          <name>$events</name>
+          <default>array('push')</default>
+          <type>array</type>
+        </argument>
+        <argument line="50">
+          <name>$active</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="86" package="Joomla\Platform\GitHub\Repositories">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="74">
+          <description>Method to delete a hook</description>
+          <long-description/>
+          <tag line="74" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="74" name="param" description="ID of the hook to delete." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="74" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="74" name="since" description="12.3"/>
+          <tag line="74" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="86">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="116" package="Joomla\Platform\GitHub\Repositories">
+        <name>edit</name>
+        <full_name>edit</full_name>
+        <docblock line="97">
+          <description>Method to edit a hook.</description>
+          <long-description/>
+          <tag line="97" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="97" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="97" name="param" description="ID of the hook to edit." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="97" name="param" description="The name of the service being called." type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="97" name="param" description="Array containing the config for the service." type="array" variable="$config">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="97" name="param" description="The events the hook will be triggered for.  This resets the currently set list" type="array" variable="$events">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="97" name="param" description="Events to add to the hook." type="array" variable="$addEvents">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="97" name="param" description="Events to remove from the hook." type="array" variable="$removeEvents">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="97" name="param" description="Flag to determine if the hook is active" type="boolean" variable="$active">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="97" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="97" name="since" description="12.3"/>
+          <tag line="97" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+          <tag line="97" name="throws" description="" type="\RuntimeException">
+            <type by_reference="false">\RuntimeException</type>
+          </tag>
+        </docblock>
+        <argument line="116">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$config</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$events</name>
+          <default>array('push')</default>
+          <type>array</type>
+        </argument>
+        <argument line="116">
+          <name>$addEvents</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="117">
+          <name>$removeEvents</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="117">
+          <name>$active</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="173" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="161">
+          <description>Method to get details about a single hook for the repository.</description>
+          <long-description/>
+          <tag line="161" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="161" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="161" name="param" description="ID of the hook to retrieve" type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="161" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="161" name="since" description="12.3"/>
+          <tag line="161" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="173">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="173">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="194" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="183">
+          <description>Method to list hooks for a repository.</description>
+          <long-description/>
+          <tag line="183" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="183" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="183" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="183" name="since" description="12.3"/>
+          <tag line="183" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="194">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="194">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="216" package="Joomla\Platform\GitHub\Repositories">
+        <name>test</name>
+        <full_name>test</full_name>
+        <docblock line="204">
+          <description>Method to test a hook against the latest repository commit</description>
+          <long-description/>
+          <tag line="204" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="204" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="204" name="param" description="ID of the hook to delete" type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="204" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+          <tag line="204" name="since" description="12.3"/>
+          <tag line="204" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="216">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="216">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="216">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Hooks.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Keys.php" hash="98b386ff8269cf8f0e0f2b39e95ac162" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Keys</name>
+      <full_name>\Joomla\Github\Package\Repositories\Keys</full_name>
+      <docblock line="12">
+        <description>GitHub API Forks class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/keys"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="33" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="23">
+          <description>List keys in a repository.</description>
+          <long-description/>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="since" description="12.4"/>
+          <tag line="23" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="33">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="33">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="54" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="43">
+          <description>Get a key.</description>
+          <long-description/>
+          <tag line="43" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="43" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="43" name="param" description="The id of the key." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="43" name="since" description="12.4"/>
+          <tag line="43" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="54">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="54">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="54">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="76" package="Joomla\Platform\GitHub\Repositories">
+        <name>create</name>
+        <full_name>create</full_name>
+        <docblock line="64">
+          <description>Create a key.</description>
+          <long-description/>
+          <tag line="64" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="64" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="64" name="param" description="The key title." type="string" variable="$title">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="64" name="param" description="The key." type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="64" name="since" description="12.4"/>
+          <tag line="64" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="76">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$title</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="76">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="105" package="Joomla\Platform\GitHub\Repositories">
+        <name>edit</name>
+        <full_name>edit</full_name>
+        <docblock line="92">
+          <description>Edit a key.</description>
+          <long-description/>
+          <tag line="92" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="92" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="92" name="param" description="The id of the key." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="92" name="param" description="The key title." type="string" variable="$title">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="92" name="param" description="The key." type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="92" name="since" description="12.4"/>
+          <tag line="92" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="105">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="105">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="105">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="105">
+          <name>$title</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="105">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="131" package="Joomla\Platform\GitHub\Repositories">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="120">
+          <description>Delete a key.</description>
+          <long-description/>
+          <tag line="120" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="120" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="120" name="param" description="The id of the key." type="integer" variable="$id">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="120" name="since" description="12.4"/>
+          <tag line="120" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="131">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="131">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="131">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Keys.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Contents.php" hash="23ef3b169058ffe968e3a8f48bfbae81" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="24" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Contents</name>
+      <full_name>\Joomla\Github\Package\Repositories\Contents</full_name>
+      <docblock line="12">
+        <description>GitHub API Repositories Contents class for the Joomla Platform.</description>
+        <long-description>&lt;p&gt;These API methods let you retrieve the contents of files within a repository as Base64 encoded content.
+See media types for requesting raw or other formats.&lt;/p&gt;</long-description>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/contents"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="67" package="Joomla\Platform\GitHub\Repositories">
+        <name>getReadme</name>
+        <full_name>getReadme</full_name>
+        <docblock line="26">
+          <description>Get the README</description>
+          <long-description>&lt;p&gt;This method returns the preferred README for a repository.&lt;/p&gt;
+
+&lt;p&gt;GET /repos/:owner/:repo/readme&lt;/p&gt;
+
+&lt;p&gt;Parameters&lt;/p&gt;
+
+&lt;p&gt;ref
+Optional string - The String name of the Commit/Branch/Tag. Defaults to master.&lt;/p&gt;
+
+&lt;p&gt;Response&lt;/p&gt;
+
+&lt;p&gt;Status: 200 OK
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4999&lt;/p&gt;
+
+&lt;p&gt;{
+"type": "file",
+"encoding": "base64",
+"_links": {
+"git": "https://api.github.com/repos/pengwynn/octokit/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1",
+"self": "https://api.github.com/repos/pengwynn/octokit/contents/README.md",
+"html": "https://github.com/pengwynn/octokit/blob/master/README.md"
+},
+"size": 5362,
+"name": "README.md",
+"path": "README.md",
+"content": "encoded content ...",
+"sha": "3d21ec53a331a6f037a91c368710b99387d012c1"
+}&lt;/p&gt;</long-description>
+          <tag line="26" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="26" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="26" name="param" description="The String name of the Commit/Branch/Tag. Defaults to master." type="string" variable="$ref">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="26" name="since" description="¿"/>
+          <tag line="26" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="67">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="67">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="67">
+          <name>$ref</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="128" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="83">
+          <description>Get contents</description>
+          <long-description>&lt;p&gt;This method returns the contents of any file or directory in a repository.&lt;/p&gt;
+
+&lt;p&gt;GET /repos/:owner/:repo/contents/:path&lt;/p&gt;
+
+&lt;p&gt;Parameters&lt;/p&gt;
+
+&lt;p&gt;path
+Optional string - The content path.
+ref
+Optional string - The String name of the Commit/Branch/Tag. Defaults to master.&lt;/p&gt;
+
+&lt;p&gt;Response&lt;/p&gt;
+
+&lt;p&gt;Status: 200 OK
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4999&lt;/p&gt;
+
+&lt;p&gt;{
+"type": "file",
+"encoding": "base64",
+"_links": {
+"git": "https://api.github.com/repos/pengwynn/octokit/git/blobs/3d21ec53a331a6f037a91c368710b99387d012c1",
+"self": "https://api.github.com/repos/pengwynn/octokit/contents/README.md",
+"html": "https://github.com/pengwynn/octokit/blob/master/README.md"
+},
+"size": 5362,
+"name": "README.md",
+"path": "README.md",
+"content": "encoded content ...",
+"sha": "3d21ec53a331a6f037a91c368710b99387d012c1"
+}&lt;/p&gt;</long-description>
+          <tag line="83" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="83" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="83" name="param" description="The content path." type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="83" name="param" description="The String name of the Commit/Branch/Tag. Defaults to master." type="string" variable="$ref">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="83" name="since" description="¿"/>
+          <tag line="83" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="128">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="128">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="128">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="128">
+          <name>$ref</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="184" package="Joomla\Platform\GitHub\Repositories">
+        <name>getArchiveLink</name>
+        <full_name>getArchiveLink</full_name>
+        <docblock line="146">
+          <description>Get archive link</description>
+          <long-description>&lt;p&gt;This method will return a 302 to a URL to download a tarball or zipball archive for a repository. Please make sure your HTTP framework is configured to follow redirects or you will need to use the Location header to make a second GET request.&lt;/p&gt;
+
+&lt;p&gt;Note: For private repositories, these links are temporary and expire quickly.&lt;/p&gt;
+
+&lt;p&gt;GET /repos/:owner/:repo/:archive_format/:ref&lt;/p&gt;
+
+&lt;p&gt;Parameters&lt;/p&gt;
+
+&lt;p&gt;archive_format
+Either tarball or zipball
+ref
+Optional string - valid Git reference, defaults to master&lt;/p&gt;
+
+&lt;p&gt;Response&lt;/p&gt;
+
+&lt;p&gt;Status: 302 Found
+Location: http://github.com/me/myprivate/tarball/master?SSO=thistokenexpires
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4999&lt;/p&gt;
+
+&lt;p&gt;To follow redirects with curl, use the -L switch:&lt;/p&gt;
+
+&lt;p&gt;curl -L https://api.github.com/repos/pengwynn/octokit/tarball &gt; octokit.tar.gz&lt;/p&gt;</long-description>
+          <tag line="146" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="146" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="146" name="param" description="Either tarball or zipball." type="string" variable="$archive_format">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="146" name="param" description="The String name of the Commit/Branch/Tag. Defaults to master." type="string" variable="$ref">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="146" name="throws" description="" type="\UnexpectedValueException">
+            <type by_reference="false">\UnexpectedValueException</type>
+          </tag>
+          <tag line="146" name="since" description="¿"/>
+          <tag line="146" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="184">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="184">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="184">
+          <name>$archive_format</name>
+          <default>'zipball'</default>
+          <type/>
+        </argument>
+        <argument line="184">
+          <name>$ref</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Contents.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Package/Repositories/Collaborators.php" hash="d52dcceb33c0adf5d6204e55f859f124" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github\Package\Repositories" line="21" package="Joomla\Platform\GitHub\Repositories">
+      <extends>\Joomla\Github\Package</extends>
+      <name>Collaborators</name>
+      <full_name>\Joomla\Github\Package\Repositories\Collaborators</full_name>
+      <docblock line="12">
+        <description>GitHub API Repositories Collaborators class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="12" name="documentation" description="http://developer.github.com/v3/repos/collaborators"/>
+        <tag line="12" name="package" description="Joomla.Platform"/>
+        <tag line="12" name="subpackage" description="GitHub.Repositories"/>
+        <tag line="12" name="since" description="11.3"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="37" package="Joomla\Platform\GitHub\Repositories">
+        <name>getList</name>
+        <full_name>getList</full_name>
+        <docblock line="23">
+          <description>List.</description>
+          <long-description>&lt;p&gt;When authenticating as an organization owner of an organization-owned repository, all organization
+owners are included in the list of collaborators. Otherwise, only users with access to the repository
+are returned in the collaborators list.&lt;/p&gt;</long-description>
+          <tag line="23" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="since" description="¿"/>
+          <tag line="23" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="37">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="37">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="59" package="Joomla\Platform\GitHub\Repositories">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="47">
+          <description>Test if a user is a collaborator.</description>
+          <long-description/>
+          <tag line="47" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="47" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="47" name="param" description="The name of the GitHub user." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="47" name="throws" description="" type="\UnexpectedValueException">
+            <type by_reference="false">\UnexpectedValueException</type>
+          </tag>
+          <tag line="47" name="since" description="¿"/>
+          <tag line="47" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="59">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="93" package="Joomla\Platform\GitHub\Repositories">
+        <name>add</name>
+        <full_name>add</full_name>
+        <docblock line="82">
+          <description>Add collaborator.</description>
+          <long-description/>
+          <tag line="82" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="82" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="82" name="param" description="The name of the GitHub user." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="82" name="since" description="¿"/>
+          <tag line="82" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="93">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="93">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="93">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github\Package\Repositories" line="115" package="Joomla\Platform\GitHub\Repositories">
+        <name>remove</name>
+        <full_name>remove</full_name>
+        <docblock line="104">
+          <description>Remove collaborator.</description>
+          <long-description/>
+          <tag line="104" name="param" description="The name of the owner of the GitHub repository." type="string" variable="$owner">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="104" name="param" description="The name of the GitHub repository." type="string" variable="$repo">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="104" name="param" description="The name of the GitHub user." type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="104" name="since" description="¿"/>
+          <tag line="104" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="115">
+          <name>$owner</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="115">
+          <name>$repo</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="115">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package/Repositories/Collaborators.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Object.php" hash="c14eb294ad0c86068d4c3c3c83c71398" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="true" namespace="Joomla\Github" line="20" package="Joomla\Framework">
+      <extends/>
+      <name>Object</name>
+      <full_name>\Joomla\Github\Object</full_name>
+      <docblock line="14">
+        <description>GitHub API object class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="14" name="package" description="Joomla\Framework"/>
+        <tag line="14" name="since" description="1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="26" namespace="Joomla\Github" package="Default">
+        <name>$options</name>
+        <default/>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+          <tag line="22" name="var" description="Options for the GitHub object." type="\Joomla\Registry\Registry">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="22" name="since" description="1.0"/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="32" namespace="Joomla\Github" package="Default">
+        <name>$client</name>
+        <default/>
+        <docblock line="28">
+          <description/>
+          <long-description/>
+          <tag line="28" name="var" description="The HTTP client object to use in sending HTTP requests." type="\Joomla\Github\Http">
+            <type by_reference="false">\Joomla\Github\Http</type>
+          </tag>
+          <tag line="28" name="since" description="1.0"/>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="38" namespace="Joomla\Github" package="Default">
+        <name>$package</name>
+        <default>''</default>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag line="34" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="34" name="since" description="¿"/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="48" package="Joomla\Framework">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="40">
+          <description>Constructor.</description>
+          <long-description/>
+          <tag line="40" name="param" description="GitHub options object." type="\Joomla\Registry\Registry" variable="$options">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="40" name="param" description="The HTTP client object." type="\Joomla\Github\Http" variable="$client">
+            <type by_reference="false">\Joomla\Github\Http</type>
+          </tag>
+          <tag line="40" name="since" description="1.0"/>
+        </docblock>
+        <argument line="48">
+          <name>$options</name>
+          <default>null</default>
+          <type>\Joomla\Registry\Registry</type>
+        </argument>
+        <argument line="48">
+          <name>$client</name>
+          <default>null</default>
+          <type>\Joomla\Github\Http</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Joomla\Github" line="70" package="Joomla\Framework">
+        <name>fetchUrl</name>
+        <full_name>fetchUrl</full_name>
+        <docblock line="57">
+          <description>Method to build and return a full request URL for the request.</description>
+          <long-description>&lt;p&gt;This method will
+add appropriate pagination details if necessary and also prepend the API url
+to have a complete URL for the request.&lt;/p&gt;</long-description>
+          <tag line="57" name="param" description="URL to inflect" type="string" variable="$path">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="param" description="Page to request" type="integer" variable="$page">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="57" name="param" description="Number of results to return per page" type="integer" variable="$limit">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="57" name="return" description="The request URL." type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="since" description="1.0"/>
+        </docblock>
+        <argument line="70">
+          <name>$path</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="70">
+          <name>$page</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="70">
+          <name>$limit</name>
+          <default>0</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="Joomla\Github" line="111" package="Joomla\Framework">
+        <name>processResponse</name>
+        <full_name>processResponse</full_name>
+        <docblock line="100">
+          <description>Process the response and decode it.</description>
+          <long-description/>
+          <tag line="100" name="param" description="The response." type="\Joomla\Http\Response" variable="$response">
+            <type by_reference="false">\Joomla\Http\Response</type>
+          </tag>
+          <tag line="100" name="param" description="The expected &quot;good&quot; code." type="integer" variable="$expectedCode">
+            <type by_reference="false">integer</type>
+          </tag>
+          <tag line="100" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="100" name="since" description="1.0"/>
+          <tag line="100" name="throws" description="" type="\DomainException">
+            <type by_reference="false">\DomainException</type>
+          </tag>
+        </docblock>
+        <argument line="111">
+          <name>$response</name>
+          <default/>
+          <type>\Joomla\Http\Response</type>
+        </argument>
+        <argument line="111">
+          <name>$expectedCode</name>
+          <default>200</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Object.php</critical>
+      <critical line="34" code="50019">No short description for property $package</critical>
+    </parse_markers>
+  </file>
+  <file path="Package.php" hash="ef9a2eab54e2b5a5d9701b42fb245cad" package="Joomla\Platform\GitHub">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla.Platform"/>
+      <tag line="2" name="subpackage" description="GitHub"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="true" namespace="Joomla\Github" line="21" package="Joomla\Platform\GitHub">
+      <extends>\Joomla\Github\Object</extends>
+      <name>Package</name>
+      <full_name>\Joomla\Github\Package</full_name>
+      <docblock line="14">
+        <description>GitHub API package class for the Joomla Platform.</description>
+        <long-description/>
+        <tag line="14" name="package" description="Joomla.Platform"/>
+        <tag line="14" name="subpackage" description="GitHub"/>
+        <tag line="14" name="since" description="¿"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="31" package="Joomla\Platform\GitHub">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="23">
+          <description>Constructor.</description>
+          <long-description/>
+          <tag line="23" name="param" description="GitHub options object." type="\Joomla\Registry\Registry" variable="$options">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="23" name="param" description="The HTTP client object." type="\Joomla\Github\Http" variable="$client">
+            <type by_reference="false">\Joomla\Github\Http</type>
+          </tag>
+          <tag line="23" name="since" description="1.0"/>
+        </docblock>
+        <argument line="31">
+          <name>$options</name>
+          <default>null</default>
+          <type>\Joomla\Registry\Registry</type>
+        </argument>
+        <argument line="31">
+          <name>$client</name>
+          <default>null</default>
+          <type>\Joomla\Github\Http</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="49" package="Joomla\Platform\GitHub">
+        <name>__get</name>
+        <full_name>__get</full_name>
+        <docblock line="39">
+          <description>Magic method to lazily create API objects</description>
+          <long-description/>
+          <tag line="39" name="param" description="Name of property to retrieve" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="39" name="since" description="¿"/>
+          <tag line="39" name="throws" description="" type="\InvalidArgumentException">
+            <type by_reference="false">\InvalidArgumentException</type>
+          </tag>
+          <tag line="39" name="return" description="GitHub API package object." type="\Joomla\Github\Package">
+            <type by_reference="false">\Joomla\Github\Package</type>
+          </tag>
+        </docblock>
+        <argument line="49">
+          <name>$name</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Package.php</critical>
+    </parse_markers>
+  </file>
+  <file path="Http.php" hash="5d4c5f9e96083757d93d92070b20bb62" package="Joomla\Framework">
+    <docblock line="2">
+      <description/>
+      <long-description/>
+      <tag line="2" name="package" description="Joomla\Framework"/>
+      <tag line="2" name="copyright" description="Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved."/>
+      <tag line="2" name="license" description="GNU General Public License version 2 or later; see LICENSE"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Joomla\Github" line="20" package="Joomla\Framework">
+      <extends>\Joomla\Http\Http</extends>
+      <name>Http</name>
+      <full_name>\Joomla\Github\Http</full_name>
+      <docblock line="14">
+        <description>HTTP client class for connecting to a GitHub instance.</description>
+        <long-description/>
+        <tag line="14" name="package" description="Joomla\Framework"/>
+        <tag line="14" name="since" description="1.0"/>
+      </docblock>
+      <constant namespace="Joomla\Github" line="26" package="Joomla\Framework">
+        <name>AUTHENTICATION_NONE</name>
+        <full_name>AUTHENTICATION_NONE</full_name>
+        <value>0</value>
+        <docblock line="22">
+          <description/>
+          <long-description/>
+          <tag line="22" name="const" description="integer  Use no authentication for HTTP connections."/>
+          <tag line="22" name="since" description="1.0"/>
+        </docblock>
+      </constant>
+      <constant namespace="Joomla\Github" line="32" package="Joomla\Framework">
+        <name>AUTHENTICATION_BASIC</name>
+        <full_name>AUTHENTICATION_BASIC</full_name>
+        <value>1</value>
+        <docblock line="28">
+          <description/>
+          <long-description/>
+          <tag line="28" name="const" description="integer  Use basic authentication for HTTP connections."/>
+          <tag line="28" name="since" description="1.0"/>
+        </docblock>
+      </constant>
+      <constant namespace="Joomla\Github" line="38" package="Joomla\Framework">
+        <name>AUTHENTICATION_OAUTH</name>
+        <full_name>AUTHENTICATION_OAUTH</full_name>
+        <value>2</value>
+        <docblock line="34">
+          <description/>
+          <long-description/>
+          <tag line="34" name="const" description="integer  Use OAuth authentication for HTTP connections."/>
+          <tag line="34" name="since" description="1.0"/>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Joomla\Github" line="48" package="Joomla\Framework">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="40">
+          <description>Constructor.</description>
+          <long-description/>
+          <tag line="40" name="param" description="Client options object." type="\Joomla\Registry\Registry" variable="$options">
+            <type by_reference="false">\Joomla\Registry\Registry</type>
+          </tag>
+          <tag line="40" name="param" description="The HTTP transport object." type="\Joomla\Http\Transport" variable="$transport">
+            <type by_reference="false">\Joomla\Http\Transport</type>
+          </tag>
+          <tag line="40" name="since" description="1.0"/>
+        </docblock>
+        <argument line="48">
+          <name>$options</name>
+          <default>null</default>
+          <type>\Joomla\Registry\Registry</type>
+        </argument>
+        <argument line="48">
+          <name>$transport</name>
+          <default>null</default>
+          <type>\Joomla\Http\Transport</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <critical line="2" code="50008">No short description for file Http.php</critical>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="Joomla" full_name="Joomla">
+    <package name="Framework" full_name="Joomla\Framework"/>
+    <package name="Platform" full_name="Joomla\Platform">
+      <package name="GitHub" full_name="Joomla\Platform\GitHub">
+        <package name="Repositories" full_name="Joomla\Platform\GitHub\Repositories"/>
+      </package>
+    </package>
+  </package>
+  <namespace name="Joomla" full_name="Joomla">
+    <namespace name="Github" full_name="Joomla\Github">
+      <namespace name="Package" full_name="Joomla\Github\Package">
+        <namespace name="Repositories" full_name="Joomla\Github\Package\Repositories"/>
+      </namespace>
+    </namespace>
+  </namespace>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
