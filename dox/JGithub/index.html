@@ -44,13 +44,51 @@
             <a class="brand" href="index.html">J!<i style="color: orange;" class="icon-github-sign"></i>Hub API</a>
 
             <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="platform/api">Platform API</a></li>
-                    <li><a href="platform/ut-coverage">Platform UT-coverage</a></li>
-                    <li><a href="framework/api">Framework API</a></li>
-                    <li><a href="framework/ut-coverage">Framework UT-coverage</a></li>
-                    <li><a href="compat-chart.html">(In)Compat Chart</a></li>
+                <ul class="nav" role="navigation">
+                    <li class="dropdown">
+                        <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Platform
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="platform/api">API</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="platform/ut-coverage">UT-coverage</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a id="drop2" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Framework
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="framework/api">API</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="framework/ut-coverage">UT-coverage</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a id="drop3" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            (In)Compat Chart
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="compat-chart-old-new.html">Old vs. New</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="compat-chart-new-old.html">New vs. Old</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -112,12 +150,14 @@
 
 <!-- Le javascript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster
-<script src="../assets/js/jquery.js"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--
+<script src="../assets/js/bootstrap-dropdown.js"></script>
 <script src="../assets/js/bootstrap-transition.js"></script>
 <script src="../assets/js/bootstrap-alert.js"></script>
 <script src="../assets/js/bootstrap-modal.js"></script>
-<script src="../assets/js/bootstrap-dropdown.js"></script>
 <script src="../assets/js/bootstrap-scrollspy.js"></script>
 <script src="../assets/js/bootstrap-tab.js"></script>
 <script src="../assets/js/bootstrap-tooltip.js"></script>
