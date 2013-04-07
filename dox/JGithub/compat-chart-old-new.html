@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JGithub compat chart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                    -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="index.html">J!<i style="color: orange;" class="icon-github-sign"></i>Hub API</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav" role="navigation">
+                    <li class="dropdown">
+                        <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Platform
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="platform/api">API</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="platform/ut-coverage">UT-coverage</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a id="drop2" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Framework
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="framework/api">API</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="framework/ut-coverage">UT-coverage</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a id="drop3" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            (In)Compat Chart
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation">
+                                <a href="compat-chart-old-new.html">Old vs. New</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="compat-chart-new-old.html">New vs. Old</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<h3><i title="Removed method" style="color: orange; cursor: help;" class="icon-warning-sign"></i> Old methods vs. New methods</h3><table border="1" class="table"><tr><th><i title="Removed method" style="color: orange; cursor: help;" class="icon-warning-sign"></i> <code>old()</code></th><th><code>new()</code></th></tr>
+<tr><td><code>account->createAuthorisation()</code></td><td><code>authorization->create()</code></td><tr><tr><td><code>account->deleteAuthorisation()</code></td><td><code>authorization->delete()</code></td><tr><tr><td><code>account->editAuthorisation()</code></td><td><code>authorization->edit()</code></td><tr><tr><td><code>account->getAuthorisation()</code></td><td><code>authorization->get()</code></td><tr><tr><td><code>account->getAuthorisations()</code></td><td><code>authorization->getList()</code></td><tr><tr><td><code>account->getRateLimit()</code></td><td><code>authorization->getRateLimit()</code></td><tr><tr><td><code>commits->create()</code></td><td><code>data->commits->create()</code></td><tr><tr><td><code>commits->createCommitComment()</code></td><td><code>repositories->comments->create()</code></td><tr><tr><td><code>commits->deleteCommitComment()</code></td><td><code>repositories->comments->delete()</code></td><tr><tr><td><code>commits->editCommitComment()</code></td><td><code>repositories->comments->edit()</code></td><tr><tr><td><code>commits->getCommit()</code></td><td><code>repositories->commits->get()</code></td><tr><tr><td><code>commits->getCommitComment()</code></td><td><code>repositories->comments->get()</code></td><tr><tr><td><code>commits->getCommitComments()</code></td><td><code>repositories->comments->getList()</code></td><tr><tr><td><code>commits->getDiff()</code></td><td><code>repositories->commits->compare()</code></td><tr><tr><td><code>commits->getList()</code></td><td><code>repositories->commits->getList()</code></td><tr><tr><td><code>commits->getListComments()</code></td><td><code>repositories->comments->getListRepository()</code></td><tr><tr><td><code>forks->create()</code></td><td><code>repositories->forks->create()</code></td><tr><tr><td><code>forks->getList()</code></td><td><code>repositories->forks->getList()</code></td><tr><tr><td><code>gists->createComment()</code></td><td><code>gists->comments->create()</code></td><tr><tr><td><code>gists->deleteComment()</code></td><td><code>gists->comments->delete()</code></td><tr><tr><td><code>gists->editComment()</code></td><td><code>gists->comments->edit()</code></td><tr><tr><td><code>gists->getComment()</code></td><td><code>gists->comments->get()</code></td><tr><tr><td><code>gists->getComments()</code></td><td><code>gists->comments->getList()</code></td><tr><tr><td><code>hooks->create()</code></td><td><code>repositories->hooks->create()</code></td><tr><tr><td><code>hooks->delete()</code></td><td><code>repositories->hooks->delete()</code></td><tr><tr><td><code>hooks->edit()</code></td><td><code>repositories->hooks->edit()</code></td><tr><tr><td><code>hooks->get()</code></td><td><code>repositories->hooks->get()</code></td><tr><tr><td><code>hooks->getList()</code></td><td><code>repositories->hooks->getList()</code></td><tr><tr><td><code>hooks->test()</code></td><td><code>repositories->hooks->test()</code></td><tr><tr><td><code>issues->createComment()</code></td><td><code>issues->comments->create()</code></td><tr><tr><td><code>issues->createLabel()</code></td><td><code>issues->labels->create()</code></td><tr><tr><td><code>issues->deleteComment()</code></td><td><code>issues->comments->delete()</code></td><tr><tr><td><code>issues->deleteLabel()</code></td><td><code>issues->labels->delete()</code></td><tr><tr><td><code>issues->editComment()</code></td><td><code>issues->comments->edit()</code></td><tr><tr><td><code>issues->editLabel()</code></td><td><code>issues->labels->update()</code></td><tr><tr><td><code>issues->getComment()</code></td><td><code>issues->comments->get()</code></td><tr><tr><td><code>issues->getComments()</code></td><td><code>issues->comments->getList()</code></td><tr><tr><td><code>issues->getLabel()</code></td><td><code>issues->labels->get()</code></td><tr><tr><td><code>issues->getLabels()</code></td><td><code>issues->labels->getList()</code></td><tr><tr><td><code>milestones->create()</code></td><td><code>issues->milestones->create()</code></td><tr><tr><td><code>milestones->delete()</code></td><td><code>issues->milestones->delete()</code></td><tr><tr><td><code>milestones->edit()</code></td><td><code>issues->milestones->edit()</code></td><tr><tr><td><code>milestones->get()</code></td><td><code>issues->milestones->get()</code></td><tr><tr><td><code>milestones->getList()</code></td><td><code>issues->milestones->getList()</code></td><tr><tr><td><code>pulls->createComment()</code></td><td><code>pulls->comments->create()</code></td><tr><tr><td><code>pulls->createCommentReply()</code></td><td><code>pulls->comments->createReply()</code></td><tr><tr><td><code>pulls->deleteComment()</code></td><td><code>pulls->comments->delete()</code></td><tr><tr><td><code>pulls->editComment()</code></td><td><code>pulls->comments->edit()</code></td><tr><tr><td><code>pulls->getComment()</code></td><td><code>pulls->comments->get()</code></td><tr><tr><td><code>pulls->getComments()</code></td><td><code>pulls->comments->getList()</code></td><tr><tr><td><code>refs->create()</code></td><td><code>data->refs->create()</code></td><tr><tr><td><code>refs->edit()</code></td><td><code>data->refs->edit()</code></td><tr><tr><td><code>refs->get()</code></td><td><code>data->refs->get()</code></td><tr><tr><td><code>refs->getList()</code></td><td><code>data->refs->getList()</code></td><tr><tr><td><code>statuses->create()</code></td><td><code>repositories->statuses->create()</code></td><tr><tr><td><code>statuses->getList()</code></td><td><code>repositories->statuses->getList()</code></td><tr><tr><td><code>users->getUser()</code></td><td><code>users->get()</code></td><tr><tr><td><code>users->getUsers()</code></td><td><code>users->getList()</code></td><tr><tr><td><code>users->updateUser()</code></td><td><code>users->edit()</code></td><tr></table>
+
+</div> <!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Placed at the end of the document so the pages load faster
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap-transition.js"></script>
+<script src="../assets/js/bootstrap-alert.js"></script>
+<script src="../assets/js/bootstrap-modal.js"></script>
+<script src="../assets/js/bootstrap-dropdown.js"></script>
+<script src="../assets/js/bootstrap-scrollspy.js"></script>
+<script src="../assets/js/bootstrap-tab.js"></script>
+<script src="../assets/js/bootstrap-tooltip.js"></script>
+<script src="../assets/js/bootstrap-popover.js"></script>
+<script src="../assets/js/bootstrap-button.js"></script>
+<script src="../assets/js/bootstrap-collapse.js"></script>
+<script src="../assets/js/bootstrap-carousel.js"></script>
+<script src="../assets/js/bootstrap-typeahead.js"></script>
+-->
+</body>
+</html>
+
