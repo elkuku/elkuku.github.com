@@ -33,8 +33,22 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/dtd">DTD</a></li>
                         <li><a href="/dox/JGithub">JGithub</a></li>
+                        <li class="dropdown{% if 'jtracker' == page.category %} active{% endif %}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">J!Tracker <b class="caret"></b></a>
+
+                            <ul class="dropdown-menu">
+                                {% assign pages = site.pages %}
+                                {% for p in site.pages %}
+                                    {% if 'jtracker' == p.category %}
+                                        <li {% if p.url == page.url %}class="active"{% endif %}>
+                                            <a class="active" href="{{ p.url }}">{{ p.title }}</a>
+                                        </li>
+                                    {%endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
             </div>
         </div>
 
@@ -46,17 +60,12 @@
                 <a href="https://github.com/elkuku">github.com/elkuku</a>
             </div>
 
-        </div><!-- /.container -->
+        </div>
 
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        -->
-
-
+        <!-- JavaScript -->
+        <script src="/bower_components/jquery/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/js/collapse.js"></script>
+        <script src="/bower_components/bootstrap/js/dropdown.js"></script>
 
     </body>
 </html>
