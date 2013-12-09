@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>El KuKu - =;)</title>
-<link href="kuku.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<h1>El KuKu's pages</h1>
+---
+layout: default
+title: ElKuKu.github.io =;)
+---
 
-<ul>
-<li><a href="http://elkuku.github.com/EasyCreator/">EasyCreator statistics</a></li>
-<li><a href="http://elkuku.github.com/L0gVi3w">L0gVi3w</a></li>
-<li><a href="http://elkuku.github.com/pear">El KuKu's PEAR channel</a></li>
-<li><a href="http://elkuku.github.com/joomla-platform">Joomla! Platform documentation</a></li>
-</ul>
+<div id="home">
 
-<h2>System</h2>
-<ul>
-    <li><a href="dtd">DTD</a></li>
-</ul>
-<h2>Projektz</h2>
-<ul>
-    <li><a href="dox">Dox</a></li>
-</ul>
-</body>
-</html>
+    <h1>ElKuKu.github.io =;)</h1>
+
+    <div class="site">
+        <ul>
+            <li><a href="http://elkuku.github.io/EasyCreator/">EasyCreator statistics</a></li>
+            <li><a href="http://elkuku.github.io/L0gVi3w">L0gVi3w</a></li>
+            <li><a href="http://elkuku.github.io/pear">El KuKu's PEAR channel</a></li>
+            <li><a href="http://elkuku.github.io/joomla-platform">Joomla! Platform documentation</a></li>
+        </ul>
+    </div>
+
+    <ul class="list-unstyled">
+        {% for post in site.posts %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for page in site.pages %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
